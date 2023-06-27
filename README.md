@@ -1,13 +1,16 @@
-# co72e499baf5f48346e5975cf
+# Restaurant Ordering App
 
-Quick start:
+From a solo project in Scrimba's "Essential Javascript Module" - I took a [Figma design](https://www.figma.com/file/Hdgwo69Dym9vVsxbuPbl0h/Mobile-Restaurant-Menu?node-id=0%3A1) and created this online ordering app for a diner.
 
-```
-$ npm install
-$ npm start
-````
+## Learning Notes:
 
-Head over to https://vitejs.dev/ to learn more about using vite
+It was a great review of form validation in Javascript. My challenge was making sure the required fields in the form validation weren't overridden by the modal closing. 
+
+Initially, I attached the event listener for closing the modal & showing the confirmation message to clicking the "pay" button, but the modal would close even if the required inputs were not filled. I changed the event listener to attach to the "submit" action instead of the form, and also overrode the default refresh action of the form, so as to show the user the final message for confirming the order.
+
+I also troubleshooted the function removeItemfromOrder() as it required using the splice method (vs. simpler array methods I had learned previously, such as pop), in order to remove the correct item in the array.
+
+
 ## About Scrimba
 
 At Scrimba our goal is to create the best possible coding school at the cost of a gym membership! 💜
@@ -16,6 +19,5 @@ The Frontend Developer Career Path aims to teach you everything you need to beco
 
 - [Our courses](https://scrimba.com/allcourses)
 - [The Frontend Career Path](https://scrimba.com/learn/frontend)
-- [Become a Scrimba Pro member](https://scrimba.com/pricing)
 
 Happy Coding!
