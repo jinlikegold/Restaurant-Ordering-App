@@ -1,0 +1,170 @@
+body {
+    margin: 0;
+    font-family: 'Smythe', serif;
+    background-color: #F5F5F5;
+} 
+
+
+/* Typography */
+
+h1 {
+    font-size: 39px;
+    margin-bottom: 3px;
+}
+
+h2 {
+    font-family: verdana;
+    font-size: 24px;
+    text-align: center;
+}
+
+p {
+    font-size: 22.42px;
+    margin-top: 0;
+}
+
+h1, p {
+    font-weight: 200;
+}
+
+.item-ingredients {
+    font-size: 16px;
+    font-style: italic;
+    color: #8B8B8B;
+    margin-top: 0;
+}
+
+#order-heading {
+    text-align: center;
+}
+
+button, input {
+    font-family: verdana, sans-serif;
+}
+
+#confirmation {
+    text-align: center;
+    color: #065F46;
+}
+
+
+/* Layout */
+
+header, main {
+    margin: 0 auto;
+    width: 600px;
+}
+
+#page-header {
+    background-image: url("images/header.png");
+    background-size: cover;
+    background-position: center;
+    height: 120px;
+    color: white;
+    padding: 30px 45px;
+}
+
+#item-selection-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-bottom: 1px solid #D2D2D2;
+}
+
+.item-img {
+    font-size: 70px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 300px;
+}
+
+#order-container{
+    padding: 0 60px 20px 60px;
+}
+
+.ordered-item-container, #order-price-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-remove-container {
+    display: flex;
+}
+
+#confirmation-container {
+    background-color: #ECFDF5;
+    padding: 20px;
+    margin-top: 0;
+}
+
+/* Icons and Buttons */
+
+
+.fa-plus {
+    color: 3C3C3C;
+    --fa-border-radius: 50%;
+    --fa-border-color: #D2D2D2;
+    padding: 15px;
+    align-self: start;
+    margin-top: 10px;
+} 
+
+.remove-btn {
+    border: none;
+    font-size: 12px;
+    color: #BBBBBB;
+    background-color: #F5F5F5;
+    padding-top: 10px;
+    height: 20px;
+}
+
+.main-btn {
+    display: block;
+    background-color: #16DB99;
+    border: none;
+    padding: 20px;
+    width: 450px;
+    color: white;
+    margin: 0 auto;
+} 
+
+/* Modal (hidden until payment)*/
+
+#payment-modal {
+    display: none;  
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 460px;
+    width: 500px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0px 0px 30px 20px #BBBBBB;
+} 
+
+#payment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin-bottom: 20px;
+    padding: 30px;
+    border: 1px solid #757575;
+    border-radius: 2px;
+}

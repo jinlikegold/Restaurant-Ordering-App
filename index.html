@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+        <link rel="stylesheet" href="index.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/a6352c3cc3.js" crossorigin="anonymous"></script>
+        <title>Restaurant Ordering App</title>
+    </head>
+
+    <body>
+        <header>
+            <div id="page-header">
+                <h1>Jimmy's Diner</h1>
+                <p>The best burgers and pizzas in town.</p>
+            </div>
+        </header>
+        <main>
+            <div id="item-selection-container"></div>
+            <div id="order-container"></div>
+            <div id="payment-modal">
+                <h2>Enter card details</h2>
+                <form id="payment-form">
+                    <input type="text" id="name" name="name" aria-label="name" placeholder="Enter your name" required>
+                    <input type="number" id="card-number" name="card-number" aria-label="card-number" placeholder="Enter card number" required>
+                    <input type="number" id="card-cvv" name="card-cvv" aria-label="card-cvv" placeholder="Enter CVV" required>
+                    <button id="pay-btn" class="main-btn" type="submit" aria-label="pay">Pay</button>
+                </form>
+            </div>
+        </main>
+
+	<script src="app.js" type="module"></script>
+    </body>
+</html>
+
