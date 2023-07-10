@@ -2,9 +2,13 @@
 
 From a solo project in Scrimba's "Essential Javascript Module" - I took a [Figma design](https://www.figma.com/file/Hdgwo69Dym9vVsxbuPbl0h/Mobile-Restaurant-Menu?node-id=0%3A1) and created this online ordering app for a diner.
 
+# Feature I'm Proud Of
+
+I added a feature for integrating multiples of the same item into the order. Instead of showing the same item multiple times, it displays the quantity of the items added if more than 1, and simply adds up the price to display alongside the line item. 
+
 ## Learning Notes:
 
-It was a great review of form validation in Javascript. My challenge was making sure the required fields in the form validation weren't overridden by the modal closing. 
+This project was a great review of form validation in Javascript. My challenge was making sure the required fields in the form validation weren't overridden by the modal closing. 
 
 Initially, I attached the event listener for closing the modal & showing the confirmation message to clicking the "pay" button, but the modal would close even if the required inputs were not filled. I changed the event listener to attach to the "submit" action instead of the form, and also overrode the default refresh action of the form, so as to show the user the final message for confirming the order.
 
