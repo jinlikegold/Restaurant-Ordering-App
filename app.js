@@ -7,14 +7,14 @@ const orderContainer = document.getElementById('order-container')
 document.addEventListener("click", function(e){
 
     if(e.target.dataset.addItem){
-        addItemsToOrder(e.target.dataset.addItem)
-        getOrderHtml()
+        handleAddItem(e.target.dataset.addItem)
+        console.log(orderedItems)
     }
     else if(e.target.dataset.removeItem){
         removeItemfromOrder(e.target.dataset.removeItem)
         getOrderHtml()
     }
-    else if(e.target.id ==='complete-order-btn' && priceTotal !== 0){
+    else if(e.target.id ==='complete-order-btn' && orderedItems.length > 0){
         paymentModal.style.display = 'block'
     } 
 })
@@ -26,28 +26,49 @@ paymentForm.addEventListener("submit", function(e){
 })
 
 let orderedItems = []
-let priceTotal = 0
+
+/* Refactor for testing */
+
+function handleAddItem(itemId){
+    addItemsToOrder(itemId)
+    getOrderHtml()
+}
+
 
 function addItemsToOrder(itemId) {
 
-    menuArray.filter((item)=>{
-        if(item.id === parseInt(itemId)) {
-            orderedItems.push({
-                name: item.name,
-                price: item.price,
-                id: item.id
-            })
-            priceTotal += item.price
-        }
-    })
+    let existingItems = orderedItems.filter((selectedItem)=>{
+        return selectedItem.id === parseInt(itemId)
+    }) // only will have 0 or 1 items in array
+
+
+    // if item is new
+    if(existingItems.length === 0){
+        menuArray.filter((item)=>{
+            if(item.id === parseInt(itemId)){
+                orderedItems.push({
+                    name: item.name,
+                    price: item.price,
+                    id: item.id,
+                    quantity: 1
+                    }) 
+                console.log("new item added to order")
+            }
+        })
+    } 
+    
+    // if item has already been added to order
+    else {
+       existingItems[0].quantity++
+    }
 
 }
+
 
 function removeItemfromOrder(itemId){
 
     for(let i=0; i<orderedItems.length; i++){
         if(orderedItems[i].id === parseInt(itemId)){
-            priceTotal -= orderedItems[i].price
             orderedItems.splice(i, 1)
         }        
     }
@@ -90,19 +111,33 @@ function getOrderHtml(){
 
     let orderHtml = `<p id='order-heading'>Your Order</p>
     `
+    let priceTotal = 0
     
     orderedItems.forEach((orderedItem)=>{
+
+        let multipleItemQuantity = ``
+        let itemPriceTotal = orderedItem.price * orderedItem.quantity
+        priceTotal += itemPriceTotal
+
+        if(orderedItem.quantity > 1){
+            multipleItemQuantity = `
+            <p>(${orderedItem.quantity})</p>
+            `
+        }
+
         orderHtml +=  `
         <div class='ordered-item-container'>
             <div class='item-remove-container'>
                 <p>${orderedItem.name}</p>
+                ${multipleItemQuantity}
                 <button class='remove-btn' class='technical' data-remove-item='${orderedItem.id}'>Remove</button>
             </div>
             <div>
-            <p>${orderedItem.price}</p>
+            <p>${itemPriceTotal}</p>
             </div>
         </div>
     `
+
     })
 
     orderHtml += `
@@ -128,18 +163,15 @@ function loadApp() {
 
 loadApp()
 
+export const thingsToTest = {
+    "handleAddItem": handleAddItem,
+    "orderedItems": orderedItems
+} 
 
-/*
+/* 
 
-Notes:
-
-Tricky part was making sure the required fields in the form validation weren't overridden by the modal closing. 
-Initially I attached the event listener for closing the modal & showing the confirmation message 
-to clicking the "pay" button, but then the modal would close even if the required inputs were not filled.
-I changed the event listener to attach to the "submit" action instead of the form, and also overrode the default refresh action of the form
-so as to show the user the final message for confirming the order.
-
-Also proud of myself for catching & implementing splice instead of the original pop in removeItemfromOrder(), 
-because it wasn't removing the correct item in the array
+this object contains references to functions 
+key = the name of the function (string)
+value = the actual function
 
 */
